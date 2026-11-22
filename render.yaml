@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: fismmok
+    runtime: node
+    plan: free
+    buildCommand: yarn
+    startCommand: yarn start
+    envVars:
+      - key: NODE_VERSION
+        value: 20
