@@ -45,7 +45,7 @@ fismmok-logistix/
 - **Official Credentials:**
   - **Company Registration:** `RC 1523574`
   - **CEO / Managing Director:** Kayode Osanyintuyi
-  - **Location:** Commercial Avenue, Apapa Port Corridor, Lagos, Nigeria
+  - **Location:** Scorpio Building, Eleganza Plaza, 1 Commercial Road, Apapa, Lagos, Nigeria
 
 ---
 
@@ -119,7 +119,7 @@ const FISMMOK_CONFIG = {
     emailPrimary: "O.kayode@fismmoklogistix.com",
     emailSecondary: "Kayodeosanyintuyi@yahoo.com",
     address: {
-      full: "Maritime Towers, Commercial Avenue, Apapa Port Corridor, Lagos, Nigeria"
+      full: "Maritime Towers, Scorpio Building, Eleganza Plaza, 1 Commercial Road, Apapa, Lagos, Nigeria"
     }
   }
 };

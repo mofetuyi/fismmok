@@ -22,11 +22,12 @@ const FISMMOK_CONFIG = {
     emailPrimary: "O.kayode@fismmoklogistix.com",
     emailSecondary: "Kayodeosanyintuyi@yahoo.com",
     address: {
-      street: "Suite 14, Maritime Towers, Commercial Avenue",
+      building: "Scorpio Building, Eleganza Plaza",
+      street: "1 Commercial Road",
       city: "Apapa",
       state: "Lagos State",
       country: "Nigeria",
-      full: "Maritime Towers, Commercial Avenue, Apapa Port Corridor, Lagos, Nigeria"
+      full: "Scorpio Building, Eleganza Plaza, 1 Commercial Road, Apapa, Lagos, Nigeria"
     },
     workingHours: "Monday – Friday: 8:00 AM – 6:00 PM | Saturday: 9:00 AM – 2:00 PM"
   },
