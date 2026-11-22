@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" width="100%" height="100%">
+  <defs>
+    <linearGradient id="skyGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#051329"/>
+      <stop offset="60%" stop-color="#0A2A5E"/>
+      <stop offset="100%" stop-color="#1B498C"/>
+    </linearGradient>
+    <linearGradient id="seaGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0E3368"/>
+      <stop offset="50%" stop-color="#092147"/>
+      <stop offset="100%" stop-color="#041024"/>
+    </linearGradient>
+    <linearGradient id="hullGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#1E293B"/>
+      <stop offset="70%" stop-color="#0F172A"/>
+      <stop offset="100%" stop-color="#020617"/>
+    </linearGradient>
+    <linearGradient id="redBottom" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#DC2626"/>
+      <stop offset="100%" stop-color="#991B1B"/>
+    </linearGradient>
+    <linearGradient id="sunGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFA826" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#FF6B00" stop-opacity="0.1"/>
+    </linearGradient>
+    <linearGradient id="glowGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#38BDF8" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#1E6FD9" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Sky -->
+  <rect width="800" height="340" fill="url(#skyGrad)"/>
+
+  <!-- Morning Port Sun Glow -->
+  <circle cx="620" cy="180" r="140" fill="url(#sunGrad)"/>
+
+  <!-- Distant Port Cranes (Apapa / Tin Can Silhouette) -->
+  <g opacity="0.25" stroke="#38BDF8" stroke-width="2" fill="none">
+    <!-- Crane 1 -->
+    <path d="M60 270 L80 140 L160 140 L180 270 M90 270 L170 270 M100 140 L120 270 M140 140 L160 270 M80 140 L240 100 L240 120 L160 140 M140 115 L140 170"/>
+    <!-- Crane 2 -->
+    <path d="M190 270 L205 160 L275 160 L290 270 M200 270 L280 270 M205 160 L350 125 L350 145 L275 160"/>
+    <!-- Distant Silo / Warehouses -->
+    <rect x="290" y="220" width="70" height="50" fill="#1E293B" opacity="0.5"/>
+    <rect x="370" y="210" width="90" height="60" fill="#1E293B" opacity="0.4"/>
+  </g>
+
+  <!-- Sea Ocean -->
+  <rect y="310" width="800" height="190" fill="url(#seaGrad)"/>
+
+  <!-- Ocean Glow / Waves -->
+  <path d="M0 320 Q 200 310 400 325 T 800 315 L 800 500 L 0 500 Z" fill="url(#glowGrad)"/>
+
+  <!-- Massive Container Ship -->
+  <g transform="translate(60, 110)">
+    <!-- Ship Superstructure (Bridge & Accommodation) -->
+    <rect x="520" y="50" width="110" height="110" rx="3" fill="#F8FAFC"/>
+    <rect x="535" y="70" width="80" height="8" rx="2" fill="#0284C7"/>
+    <rect x="535" y="85" width="80" height="8" rx="2" fill="#0284C7"/>
+    <rect x="535" y="100" width="80" height="8" rx="2" fill="#0284C7"/>
+    <!-- Bridge Wing & Windows -->
+    <polygon points="505,50 645,50 635,35 515,35" fill="#E2E8F0"/>
+    <rect x="520" y="38" width="110" height="8" rx="1" fill="#0F172A"/>
+    <!-- Radar Mast & Antennas -->
+    <line x1="575" y1="35" x2="575" y2="10" stroke="#94A3B8" stroke-width="3"/>
+    <line x1="560" y1="18" x2="590" y2="18" stroke="#94A3B8" stroke-width="2"/>
+    <circle cx="575" cy="8" r="4" fill="#FF6B00"/>
+    <!-- Exhaust Funnel -->
+    <polygon points="605,45 625,45 628,15 608,15" fill="#DC2626"/>
+    <rect x="608" y="15" width="20" height="6" fill="#0F172A"/>
+
+    <!-- Stacked Cargo Containers (Color coordinated) -->
+    <!-- Tier 1 (Lowest) -->
+    <rect x="130" y="145" width="55" height="24" rx="2" fill="#1E6FD9"/>
+    <rect x="190" y="145" width="55" height="24" rx="2" fill="#FF6B00"/>
+    <rect x="250" y="145" width="55" height="24" rx="2" fill="#10B981"/>
+    <rect x="310" y="145" width="55" height="24" rx="2" fill="#0284C7"/>
+    <rect x="370" y="145" width="55" height="24" rx="2" fill="#EAB308"/>
+    <rect x="430" y="145" width="55" height="24" rx="2" fill="#DC2626"/>
+
+    <!-- Tier 2 -->
+    <rect x="140" y="118" width="55" height="24" rx="2" fill="#FF6B00"/>
+    <rect x="200" y="118" width="55" height="24" rx="2" fill="#0284C7"/>
+    <rect x="260" y="118" width="55" height="24" rx="2" fill="#1E6FD9"/>
+    <rect x="320" y="118" width="55" height="24" rx="2" fill="#DC2626"/>
+    <rect x="380" y="118" width="55" height="24" rx="2" fill="#10B981"/>
+    <rect x="440" y="118" width="55" height="24" rx="2" fill="#3B82F6"/>
+
+    <!-- Tier 3 -->
+    <rect x="160" y="91" width="55" height="24" rx="2" fill="#0284C7"/>
+    <rect x="220" y="91" width="55" height="24" rx="2" fill="#10B981"/>
+    <rect x="280" y="91" width="55" height="24" rx="2" fill="#FF6B00"/>
+    <rect x="340" y="91" width="55" height="24" rx="2" fill="#1E6FD9"/>
+    <rect x="400" y="91" width="55" height="24" rx="2" fill="#F59E0B"/>
+
+    <!-- Tier 4 (Top) -->
+    <rect x="235" y="64" width="55" height="24" rx="2" fill="#1E6FD9"/>
+    <rect x="295" y="64" width="55" height="24" rx="2" fill="#0284C7"/>
+    <rect x="355" y="64" width="55" height="24" rx="2" fill="#FF6B00"/>
+
+    <!-- Container Rib Details (Texture) -->
+    <g stroke="rgba(255,255,255,0.2)" stroke-width="1.5">
+      <line x1="145" y1="145" x2="145" y2="169"/>
+      <line x1="160" y1="145" x2="160" y2="169"/>
+      <line x1="175" y1="145" x2="175" y2="169"/>
+      <line x1="205" y1="145" x2="205" y2="169"/>
+      <line x1="220" y1="145" x2="220" y2="169"/>
+      <line x1="235" y1="145" x2="235" y2="169"/>
+      <line x1="265" y1="118" x2="265" y2="142"/>
+      <line x1="280" y1="118" x2="280" y2="142"/>
+    </g>
+
+    <!-- Vessel Main Hull Upper Deck -->
+    <!-- Bow points forward to left -->
+    <path d="M30 170 L650 170 L640 215 L120 215 L30 170 Z" fill="url(#hullGrad)"/>
+
+    <!-- Hull Red Lower Belt (Keel/Draft) -->
+    <path d="M60 215 L640 215 L630 235 L120 235 L60 215 Z" fill="url(#redBottom)"/>
+
+    <!-- Ship Name on Bow -->
+    <text x="130" y="195" font-family="'Poppins', sans-serif" font-weight="800" font-size="12" fill="#FFFFFF" letter-spacing="2">
+      FISMMOK VOYAGER • APAPA
+    </text>
+
+    <!-- Waterline White Stripe -->
+    <line x1="60" y1="215" x2="640" y2="215" stroke="#FFFFFF" stroke-width="2" opacity="0.9"/>
+
+    <!-- Dynamic Bow Wake & Foaming Water -->
+    <path d="M-10 220 Q 40 210 110 225 Q 180 235 240 225" stroke="#FFFFFF" stroke-width="4" fill="none" opacity="0.8" stroke-linecap="round"/>
+    <path d="M-20 226 Q 50 218 130 230" stroke="#38BDF8" stroke-width="3" fill="none" opacity="0.6"/>
+  </g>
+
+  <!-- Foreground Wave Crests -->
+  <path d="M0 430 Q 150 410 300 425 T 600 420 T 800 435 L 800 500 L 0 500 Z" fill="#041226" opacity="0.85"/>
+  <path d="M0 450 Q 200 440 400 455 T 800 445 L 800 500 L 0 500 Z" fill="#020817"/>
+</svg>

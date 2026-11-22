@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 375" width="100%" height="100%">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@800;900&amp;family=Inter:wght@800;900&amp;display=swap');
+      .rc-text {
+        font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        font-size: 34px;
+        font-weight: 800;
+        fill: #202772;
+        letter-spacing: 2px;
+      }
+      .brand-title {
+        font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+        font-size: 115px;
+        font-weight: 900;
+        fill: #202772;
+        letter-spacing: 1.5px;
+      }
+      .brand-sub {
+        font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+        font-size: 43px;
+        font-weight: 800;
+        fill: #FFFFFF;
+        letter-spacing: 0.8px;
+      }
+    </style>
+  </defs>
+
+  <!-- Outer Frame & Deep Royal Navy Background -->
+  <rect x="5" y="5" width="990" height="365" rx="6" fill="#282F92" stroke="#FFFFFF" stroke-width="10"/>
+
+  <!-- Left Slanted Emblem / Parallelogram -->
+  <!-- Forward slant: top starts right, bottom starts left -->
+  <polygon points="152,36 270,36 150,339 32,339" fill="#202772" stroke="#FFFFFF" stroke-width="12" stroke-linejoin="miter"/>
+
+  <!-- Main White Card Container -->
+  <polygon points="295,36 975,36 975,339 175,339" fill="#FFFFFF" stroke="#FFFFFF" stroke-width="4"/>
+
+  <!-- Cyan / Azure Bottom Brand Ribbon -->
+  <!-- Slants along the left edge, runs across, then slopes down to bottom-right corner -->
+  <polygon points="230,200 720,200 975,339 175,339" fill="#1BAEE8"/>
+
+  <!-- RC Registration Number -->
+  <text x="605" y="105" class="rc-text">RC 1523574</text>
+
+  <!-- Main Brand Name: FISMMOK -->
+  <text x="265" y="186" class="brand-title">FISMMOK</text>
+
+  <!-- Subtitle Ribbon Text: LOGISTIX NIGERIA LIMITED -->
+  <text x="180" y="286" class="brand-sub">LOGISTIX NIGERIA LIMITED</text>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 400" width="100%" height="100%">
+  <defs>
+    <linearGradient id="airSky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#0A1F44"/>
+      <stop offset="100%" stop-color="#1E6FD9"/>
+    </linearGradient>
+    <linearGradient id="jetGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#CBD5E1"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" rx="12" fill="url(#airSky)"/>
+  <!-- Runway lights / Flight curves -->
+  <path d="M-50 350 Q 200 280 450 120 T 650 40" stroke="#38BDF8" stroke-width="4" stroke-dasharray="10 10" fill="none" opacity="0.6"/>
+  <path d="M-50 370 Q 220 300 470 140 T 650 60" stroke="#FF6B00" stroke-width="3" fill="none" opacity="0.7"/>
+  <!-- Cargo Jet Fuselage -->
+  <g transform="translate(140, 100) rotate(-14)">
+    <!-- Wings -->
+    <polygon points="120,70 180,70 90,170 60,170" fill="#94A3B8"/>
+    <polygon points="170,40 220,40 280,-40 250,-40" fill="#64748B"/>
+    <!-- Fuselage Body -->
+    <path d="M30 65 Q 40 45 100 45 L 310 45 Q 350 45 380 60 Q 350 78 310 78 L 100 78 Q 40 78 30 65 Z" fill="url(#jetGrad)"/>
+    <!-- Tail Fin -->
+    <polygon points="310,45 350,-20 375,-20 360,45" fill="#0A1F44"/>
+    <polygon points="325,45 355,-10 365,-10 345,45" fill="#FF6B00"/>
+    <!-- Jet Engines -->
+    <rect x="130" y="90" width="45" height="18" rx="7" fill="#475569"/>
+    <ellipse cx="130" cy="99" rx="4" ry="9" fill="#0F172A"/>
+    <ellipse cx="175" cy="99" rx="3" ry="8" fill="#FF6B00"/>
+    <!-- Cargo Door Markings -->
+    <rect x="90" y="52" width="35" height="20" rx="2" fill="none" stroke="#1E6FD9" stroke-width="2"/>
+    <text x="140" y="65" font-family="'Poppins', sans-serif" font-weight="800" font-size="12" fill="#0A1F44">FISMMOK AIR CARGO</text>
+  </g>
+  <!-- Cargo pallets on tarmac -->
+  <g transform="translate(60, 270)">
+    <rect x="0" y="40" width="80" height="40" rx="4" fill="#FF6B00"/>
+    <rect x="15" y="10" width="50" height="30" rx="3" fill="#F8FAFC"/>
+    <line x1="0" y1="60" x2="80" y2="60" stroke="#FFFFFF" stroke-width="2"/>
+    <rect x="95" y="25" width="85" height="55" rx="4" fill="#0284C7"/>
+    <rect x="195" y="35" width="75" height="45" rx="4" fill="#3B82F6"/>
+  </g>
+</svg>
