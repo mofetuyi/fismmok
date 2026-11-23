@@ -1,16 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="100%" height="100%">
-  <!-- Deep Royal Navy Background with crisp border -->
-  <rect x="4" y="4" width="192" height="192" rx="28" fill="#282F92" stroke="#FFFFFF" stroke-width="6"/>
+  <!-- Rounded Base -->
+  <rect x="4" y="4" width="192" height="192" rx="36" fill="#0A1F44"/>
 
-  <!-- Stylized Forward Chevron -->
-  <polygon points="58,35 102,35 62,165 18,165" fill="#202772" stroke="#FFFFFF" stroke-width="6" stroke-linejoin="miter"/>
+  <!-- Left Slanted Chevron / Parallelogram -->
+  <polygon points="56,38 98,38 58,162 16,162" fill="#001788"/>
 
-  <!-- White Card with Slanted Edge -->
-  <polygon points="112,35 185,35 185,165 72,165" fill="#FFFFFF"/>
+  <!-- Main Diagonal Accent -->
+  <polygon points="112,38 184,38 184,162 72,162" fill="#FFFFFF"/>
 
-  <!-- Cyan Lower Accent -->
-  <polygon points="90,110 185,110 185,165 72,165" fill="#1BAEE8"/>
+  <!-- Cyan Bottom Banner -->
+  <polygon points="88,110 184,110 184,162 72,162" fill="#09ACF6"/>
 
-  <!-- Brand Initial 'F' in Deep Navy -->
-  <text x="118" y="98" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="64" font-weight="900" fill="#202772">F</text>
+  <!-- Initial 'F' in Navy -->
+  <text x="120" y="98" font-family="'Poppins', 'Segoe UI', Arial, sans-serif" font-size="64" font-weight="900" fill="#001788">F</text>
 </svg>
