@@ -31,6 +31,14 @@ const FISMMOK_CONFIG = {
     },
     workingHours: "Monday – Friday: 8:00 AM – 6:00 PM | Saturday: 9:00 AM – 2:00 PM"
   },
+  forms: {
+    // Quote and Contact submissions route to this endpoint
+    // FormSubmit automatically delivers form submissions directly to this email
+    recipientEmail: "Kayodeosanyintuyi@yahoo.com",
+    ccEmail: "O.kayode@fismmoklogistix.com",
+    formsubmitEndpoint: "https://formsubmit.co/ajax/Kayodeosanyintuyi@yahoo.com",
+    whatsappNumber: "2348109285465"
+  },
   socials: {
     facebook: "https://facebook.com/fismmoklogistix",
     linkedin: "https://linkedin.com/company/fismmok-logistix",

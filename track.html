@@ -2,229 +2,26 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="2; url=quote.html">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>FISMMOK LOGISTIX NIGERIA LIMITED — Track Consignment</title>
-  <meta name="description" content="Track your container, sea freight, air cargo, or haulage consignment in real time with the FISMMOK LOGISTIX shipment tracking tool.">
-  <meta property="og:title" content="Track Shipment - FISMMOK LOGISTIX">
-  <meta property="og:description" content="Monitor your vessel, customs status, and interstate haulage delivery across Nigerian ports.">
-  <meta property="og:image" content="assets/logo.svg">
-    <!-- Favicon / Browser Tab Icons with Full Company Name -->
+  <title>FISMMOK LOGISTIX NIGERIA LIMITED — Consignment Status & Operations</title>
   <link rel="icon" type="image/svg+xml" href="assets/logo-icon.svg">
   <link rel="icon" type="image/png" href="assets/favicon.png">
   <link rel="shortcut icon" href="favicon.ico">
-  <link rel="apple-touch-icon" href="assets/favicon.png">
   <link rel="stylesheet" href="css/style.css">
 </head>
-<body>
-
-  <!-- Top Announcement Bar -->
-  <aside class="topbar">
-    <div class="container">
-      <div class="topbar-info">
-        <span class="topbar-item">
-          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"/></svg>
-          <span data-cfg="address-full">Scorpio Building, Eleganza Plaza, 1 Commercial Road, Apapa, Lagos, Nigeria</span>
-        </span>
-        <span class="topbar-item">
-          <svg width="15" height="15" fill="currentColor" viewBox="0 0 24 24"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
-          <a data-cfg="phone-href" href="tel:+2348109285465"><span data-cfg="phone-display">+234 (0) 810 928 5465</span></a>
-        </span>
-      </div>
-      <div class="topbar-socials">
-        <span>Live Vessel &amp; Port Milestone Monitoring</span>
-      </div>
+<body style="min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; background: var(--bg-subtle); padding: 1.5rem; text-align: center;">
+  <div style="max-width: 540px; background: #FFFFFF; border-radius: var(--radius-lg); padding: 2.5rem 2rem; box-shadow: var(--shadow-lg); border-top: 4px solid var(--accent);">
+    <img src="assets/logo.svg" alt="FISMMOK LOGISTIX" style="max-height: 48px; width: auto; margin-bottom: 1.5rem;">
+    <h2 style="font-family: var(--font-heading); color: var(--primary); font-size: 1.4rem; margin-bottom: 0.75rem;">Consignment Status &amp; Inquiries</h2>
+    <p style="color: var(--text-muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+      For live cargo updates, PAAR verification, container releases, or new shipment quotations, please contact our Apapa Port Operations Desk directly or request a freight quote.
+    </p>
+    <div style="display: flex; gap: 0.75rem; justify-content: center; flex-wrap: wrap;">
+      <a href="quote.html" class="btn btn-accent btn-md">Request a Freight Quote &rarr;</a>
+      <a href="https://wa.me/2348109285465" class="btn btn-outline-navy btn-md">Chat on WhatsApp</a>
     </div>
-  </aside>
-
-  <!-- Sticky Navbar -->
-  <header class="navbar" id="mainNavbar">
-    <div class="container">
-      <a href="index.html" class="brand-logo" aria-label="FISMMOK LOGISTIX Home">
-        <img src="assets/logo.svg" alt="FISMMOK LOGISTIX Logo" width="280" height="52">
-      </a>
-      <nav class="nav-menu" aria-label="Main Navigation">
-        <a href="index.html" class="nav-link">Home</a>
-        <a href="about.html" class="nav-link">About Us</a>
-        <a href="services.html" class="nav-link">Services</a>
-        <a href="track.html" class="nav-link active">Track Shipment</a>
-        <a href="quote.html" class="nav-link">Get a Quote</a>
-        <a href="contact.html" class="nav-link">Contact</a>
-      </nav>
-      <div class="nav-actions">
-        <a href="quote.html" class="btn btn-accent btn-sm">Get a Quote</a>
-        <button class="hamburger-btn" id="hamburgerBtn" aria-label="Toggle navigation menu" aria-expanded="false">
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-          <span class="hamburger-line"></span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- Mobile Drawer -->
-  <div class="mobile-nav-backdrop" id="mobileNavBackdrop"></div>
-  <aside class="mobile-nav" id="mobileNav" aria-label="Mobile Navigation Drawer">
-    <div class="mobile-nav-header">
-      <img src="assets/logo.svg" alt="FISMMOK LOGISTIX" style="max-height: 40px; width: auto;">
-      <button class="mobile-close-btn" id="mobileCloseBtn" aria-label="Close menu">&times;</button>
-    </div>
-    <div class="mobile-nav-links">
-      <a href="index.html" class="mobile-nav-link">Home <span>&rarr;</span></a>
-      <a href="about.html" class="mobile-nav-link">About Us <span>&rarr;</span></a>
-      <a href="services.html" class="mobile-nav-link">Services <span>&rarr;</span></a>
-      <a href="track.html" class="mobile-nav-link active">Track Shipment <span>&rarr;</span></a>
-      <a href="quote.html" class="mobile-nav-link">Get a Quote <span>&rarr;</span></a>
-      <a href="contact.html" class="mobile-nav-link">Contact Us <span>&rarr;</span></a>
-    </div>
-    <a href="quote.html" class="btn btn-accent" style="width: 100%;">Request a Quote</a>
-  </aside>
-
-  <!-- Page Header -->
-  <section class="about-hero">
-    <div class="container">
-      <div class="badge-tag light">24/7 Consignment Visibility</div>
-      <h1 style="font-family: var(--font-heading); font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 800; margin-bottom: 1rem;">
-        Consignment &amp; Container Tracker
-      </h1>
-      <p style="font-size: 1.15rem; color: #CBD5E1; max-width: 680px; margin: 0 auto;">
-        Enter your Bill of Lading (B/L), Container Number, or FISMMOK Booking Reference to inspect real-time vessel position, customs status, and delivery milestones.
-      </p>
-    </div>
-  </section>
-
-  <!-- Tracking Tool Section -->
-  <section class="section section-subtle">
-    <div class="container">
-      <div class="track-dashboard">
-        
-        <form id="trackingSearchForm">
-          <label style="display: block; font-weight: 700; color: var(--primary); margin-bottom: 0.5rem; font-family: var(--font-heading); font-size: 1.1rem;">
-            Enter Tracking Reference Number
-          </label>
-          <div class="track-input-group">
-            <input type="text" id="trackingInput" class="track-input" placeholder="e.g. FLN-88214 or B/L NUMBER" required>
-            <button type="submit" class="btn btn-accent btn-lg">Track Cargo</button>
-          </div>
-        </form>
-
-        <div class="track-suggestions">
-          <span style="font-weight: 600;">Try live demo tracking numbers:</span>
-          <button type="button" class="sample-chip" data-code="FLN-88214">FLN-88214 (Apapa Sea Freight)</button>
-          <button type="button" class="sample-chip" data-code="FLN-77390">FLN-77390 (Tin Can Customs Cleared)</button>
-          <button type="button" class="sample-chip" data-code="FLN-90432">FLN-90432 (Lagos Air Cargo)</button>
-        </div>
-
-        <!-- Rendered Result Container -->
-        <div id="trackingResultBox" class="tracking-result-box">
-          <!-- Dynamically populated by js/main.js -->
-        </div>
-
-      </div>
-    </div>
-  </section>
-
-  <!-- Explanatory Port Status Badges -->
-  <section class="section">
-    <div class="container">
-      <div class="section-header">
-        <div class="badge-tag blue">Nigerian Port Process Transparency</div>
-        <h2 class="section-title">Understanding Your Cargo Journey</h2>
-        <p class="section-subtitle">
-          We keep every stage transparent so our clients can prepare sales channels and avoid costly demurrage.
-        </p>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.75rem;">
-        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.75rem; box-shadow: var(--shadow-sm);">
-          <div style="width: 40px; height: 40px; background: rgba(30, 111, 217, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); margin-bottom: 1rem; font-weight: 800;">1</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">Pre-Arrival Assessment (PAAR)</h4>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">
-            Commercial invoices and CCVO are submitted to Nigerian Customs for risk assessment and duty assessment issuance before the ship drops anchor.
-          </p>
-        </div>
-
-        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.75rem; box-shadow: var(--shadow-sm);">
-          <div style="width: 40px; height: 40px; background: rgba(30, 111, 217, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); margin-bottom: 1rem; font-weight: 800;">2</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">Berthing &amp; Terminal Discharge</h4>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">
-            Vessel discharges containers at Apapa Port quays (APMT, TICT) or Tin Can Island. Consignee manifest is validated with the Nigerian Ports Authority.
-          </p>
-        </div>
-
-        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.75rem; box-shadow: var(--shadow-sm);">
-          <div style="width: 40px; height: 40px; background: rgba(30, 111, 217, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); margin-bottom: 1rem; font-weight: 800;">3</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">Customs Examination &amp; Release</h4>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">
-            Physical or non-intrusive container scanning by NCS officers. Upon clearance stamping, shipping line delivery order (DO) and terminal charges are settled.
-          </p>
-        </div>
-
-        <div style="background: #FFFFFF; border: 1px solid var(--border-light); border-radius: var(--radius-md); padding: 1.75rem; box-shadow: var(--shadow-sm);">
-          <div style="width: 40px; height: 40px; background: rgba(30, 111, 217, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: var(--secondary); margin-bottom: 1rem; font-weight: 800;">4</div>
-          <h4 style="font-family: var(--font-heading); font-size: 1.1rem; color: var(--primary); margin-bottom: 0.5rem;">Terminal Gate-Out &amp; Haulage</h4>
-          <p style="font-size: 0.875rem; color: var(--text-muted);">
-            Terminal release authorization issued; flatbed truck enters the terminal, mounts container, and commences transit with real-time GPS tracking to the receiver.
-          </p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer -->
-  <footer class="footer">
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <img src="assets/logo-white.svg" alt="FISMMOK LOGISTIX" style="max-height: 48px; width: auto;">
-          <p>
-            FISMMOK LOGISTIX NIGERIA LIMITED is an accredited freight forwarding, clearing, haulage, and supply chain management company established in Apapa, Lagos, Nigeria.
-          </p>
-        </div>
-        <div>
-          <h4 class="footer-title">Navigation</h4>
-          <div class="footer-links">
-            <a href="index.html">Home</a>
-            <a href="about.html">About Company</a>
-            <a href="services.html">Logistics Services</a>
-            <a href="track.html">Shipment Tracker</a>
-            <a href="quote.html">Request a Quote</a>
-            <a href="contact.html">Contact Us</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="footer-title">Services</h4>
-          <div class="footer-links">
-            <a href="services.html#sea-freight">Sea Freight Forwarding</a>
-            <a href="services.html#customs-clearing">Customs Brokerage</a>
-            <a href="services.html#road-haulage">Interstate Haulage</a>
-            <a href="services.html#air-freight">Air Cargo Forwarding</a>
-            <a href="services.html#warehousing">Bonded Warehousing</a>
-            <a href="services.html#door-to-door">Door to Door Delivery</a>
-          </div>
-        </div>
-        <div>
-          <h4 class="footer-title">Apapa Operations</h4>
-          <div class="footer-links" style="font-size: 0.875rem;">
-            <p><span data-cfg="address-full">Scorpio Building, Eleganza Plaza, 1 Commercial Road, Apapa, Lagos, Nigeria</span></p>
-            <p style="margin-top: 0.5rem;"><a data-cfg="phone-href" href="tel:+2348109285465" data-cfg="phone-display">+234 (0) 810 928 5465</a></p>
-            <p style="margin-top: 0.5rem;"><a data-cfg="email-primary" href="mailto:O.kayode@fismmoklogistix.com">O.kayode@fismmoklogistix.com</a></p>
-          </div>
-        </div>
-      </div>
-      <div class="footer-bottom">
-        <div>&copy; <span data-cfg="current-year">2026</span> FISMMOK LOGISTIX NIGERIA LIMITED. All Rights Reserved.</div>
-        <div>Accredited Clearing &amp; Forwarding Agent &bull; Apapa, Lagos</div>
-      </div>
-    </div>
-  </footer>
-
-  <!-- Floating WhatsApp -->
-  <a data-cfg="whatsapp-href" href="https://wa.me/2348109285465" target="_blank" rel="noopener" class="floating-whatsapp" aria-label="WhatsApp">
-    <svg class="whatsapp-icon-pulse" width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91C2.13 13.66 2.59 15.36 3.45 16.86L2.05 22L7.3 20.62C8.75 21.41 10.38 21.83 12.04 21.83C17.5 21.83 21.95 17.38 21.95 11.92C21.95 9.27 20.92 6.78 19.05 4.91C17.18 3.03 14.69 2 12.04 2M12.05 3.67C14.25 3.67 16.31 4.53 17.87 6.09C19.42 7.65 20.28 9.72 20.28 11.92C20.28 16.46 16.58 20.15 12.04 20.15C10.56 20.15 9.11 19.76 7.85 19L7.55 18.83L4.43 19.65L5.26 16.61L5.06 16.29C4.24 15 3.8 13.47 3.8 11.91C3.81 7.37 7.5 3.67 12.05 3.67M9.53 7.36C9.37 7.36 9.11 7.42 8.89 7.66C8.67 7.9 8.05 8.48 8.05 9.68C8.05 10.87 8.92 12.03 9.04 12.19C9.17 12.35 10.74 14.77 13.15 15.82C13.72 16.07 14.17 16.22 14.51 16.33C15.09 16.51 15.62 16.48 16.03 16.42C16.5 16.35 17.47 15.83 17.67 15.26C17.87 14.7 17.87 14.22 17.81 14.12C17.75 14.02 17.59 13.96 17.35 13.84C17.11 13.72 15.93 13.14 15.71 13.06C15.49 12.98 15.33 12.94 15.17 13.18C15.01 13.42 14.55 13.96 14.41 14.12C14.27 14.28 14.13 14.3 13.89 14.18C13.65 14.06 12.88 13.81 11.97 13C11.26 12.37 10.78 11.59 10.64 11.35C10.5 11.11 10.63 10.98 10.75 10.86C10.86 10.75 11 10.56 11.12 10.42C11.24 10.28 11.28 10.18 11.36 10.02C11.44 9.86 11.4 9.72 11.34 9.6C11.28 9.48 10.82 8.35 10.63 7.89C10.44 7.43 10.25 7.49 10.1 7.49C9.96 7.49 9.8 7.49 9.64 7.49L9.53 7.36Z"/></svg>
-    <span>Chat on WhatsApp</span>
-  </a>
-
-  <script src="js/config.js"></script>
-  <script src="js/main.js"></script>
+    <p style="font-size: 0.8rem; color: var(--text-muted); margin-top: 1.5rem;">Redirecting to Quote page in 2 seconds...</p>
+  </div>
 </body>
 </html>

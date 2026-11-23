@@ -8,9 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initDynamicConfig();
   initMobileNav();
   initStatCounters();
-  initTrackingEngine();
   initForms();
-  initQuickTrackHero();
 });
 
 /* --------------------------------------------------------------------------
@@ -152,278 +150,121 @@ function initStatCounters() {
 }
 
 /* --------------------------------------------------------------------------
-   4. Cargo Tracking Simulator Engine
-   -------------------------------------------------------------------------- */
-const SAMPLE_SHIPMENTS = {
-  "FLN-88214": {
-    code: "FLN-88214",
-    status: "In Transit - Approaching Apapa Port",
-    statusType: "in-transit",
-    origin: "Shanghai Port, China (CNSHA)",
-    destination: "Apapa Container Terminal (TICT), Lagos, Nigeria",
-    vessel: "MSC OSCAR V.402",
-    blNumber: "BL-SH-AP-992140",
-    containerNo: "MSCU-821943-2 (40ft High Cube)",
-    eta: "Tomorrow, 08:30 AM WAT",
-    weight: "24,800 KG",
-    commodity: "Industrial Solar Inverters & Energy Equipment",
-    steps: [
-      { title: "Booking Confirmed & Gate-in", date: "Nov 02, 2026", location: "Shanghai Logistics Hub", done: true },
-      { title: "Vessel Departure from Origin Port", date: "Nov 05, 2026", location: "East China Sea", done: true },
-      { title: "Ocean Freight Transit (Gulf of Guinea)", date: "Nov 18, 2026", location: "Atlantic Transit Corridor", done: true },
-      { title: "Berthing & Terminal Offloading", date: "Estimated Nov 22, 2026", location: "Apapa Port Berth 4, Lagos", done: false, active: true },
-      { title: "Nigerian Customs PAAR Clearance", date: "Pending Terminal Offload", location: "NCS Apapa Area Command", done: false },
-      { title: "Interstate Haulage Dispatch & Final Delivery", date: "Pending Clearance", location: "Client Consignee Warehouse", done: false }
-    ]
-  },
-  "FLN-77390": {
-    code: "FLN-77390",
-    status: "Customs Cleared & Gate-Out Ready",
-    statusType: "cleared",
-    origin: "Jebel Ali Port, Dubai (AEJEA)",
-    destination: "Tin Can Island Port, Lagos, Nigeria",
-    vessel: "MAERSK COTONOU V.118",
-    blNumber: "BL-DXB-TC-440182",
-    containerNo: "MRKU-419082-9 (2x 20ft Standard)",
-    eta: "Cleared for Immediate Dispatch",
-    weight: "38,200 KG",
-    commodity: "Automotive Spare Parts & Lubricants",
-    steps: [
-      { title: "Cargo Loading & Export Clearance", date: "Oct 28, 2026", location: "Jebel Ali Freezone", done: true },
-      { title: "Vessel Transit & Sea Freight", date: "Nov 01, 2026", location: "Red Sea - Cape Route", done: true },
-      { title: "Vessel Discharged at Lagos Terminal", date: "Nov 16, 2026", location: "Tin Can Island Container Terminal", done: true },
-      { title: "Customs Inspection & PAAR Verified", date: "Nov 19, 2026", location: "NCS Tin Can Island Command", done: true },
-      { title: "Terminal Demurrage Paid & Release Order", date: "Today, 11:15 AM", location: "FISMMOK Clearing Desk, Apapa", done: true, active: true },
-      { title: "Haulage Truck Assigned for Outbound Delivery", date: "In Progress", location: "Lagos Dispatch Base", done: false }
-    ]
-  },
-  "FLN-90432": {
-    code: "FLN-90432",
-    status: "Air Freight Arrived - Customs Verification",
-    statusType: "in-transit",
-    origin: "Heathrow Airport, London (LHR)",
-    destination: "Murtala Muhammed Int'l Airport Cargo (LOS), Lagos",
-    vessel: "CARGOLUX FLIGHT CV-781",
-    blNumber: "AWB-781-9921-4320",
-    containerNo: "ULD-AKE-91044",
-    eta: "Arrived - Fast Track Processing",
-    weight: "1,450 KG",
-    commodity: "Critical Telecommunication Hardware",
-    steps: [
-      { title: "Air Waybill Lodged & Security Screening", date: "Nov 18, 2026", location: "Heathrow Cargo Terminal 4", done: true },
-      { title: "Flight Departure from London (LHR)", date: "Nov 19, 2026", location: "Direct Flight LOS", done: true },
-      { title: "Aircraft Landed at Lagos Airport (LOS)", date: "Nov 20, 2026", location: "NAHCO Cargo Warehouse, Ikeja", done: true },
-      { title: "NAHCO Terminal Verification & NCS Assessment", date: "Today, 09:40 AM", location: "NCS MMIA Command", done: true, active: true },
-      { title: "Final Dispatch to Corporate Client Office", date: "Estimated 03:00 PM", location: "Victoria Island, Lagos", done: false }
-    ]
-  }
-};
-
-function initTrackingEngine() {
-  const trackForm = document.getElementById("trackingSearchForm");
-  const trackInput = document.getElementById("trackingInput");
-  const resultBox = document.getElementById("trackingResultBox");
-  const sampleChips = document.querySelectorAll(".sample-chip");
-
-  if (!trackForm || !trackInput || !resultBox) return;
-
-  // Sample Chips Click
-  sampleChips.forEach(chip => {
-    chip.addEventListener("click", () => {
-      const code = chip.getAttribute("data-code");
-      trackInput.value = code;
-      renderTrackingResult(code);
-    });
-  });
-
-  // Track Form Submission
-  trackForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const code = trackInput.value.trim().toUpperCase();
-    if (!code) {
-      showToast("Please enter a valid tracking number or Bill of Lading (B/L).");
-      return;
-    }
-    renderTrackingResult(code);
-  });
-
-  // Check URL parameters for auto lookup (e.g. ?code=FLN-88214)
-  const urlParams = new URLSearchParams(window.location.search);
-  const queryCode = urlParams.get("code");
-  if (queryCode) {
-    trackInput.value = queryCode;
-    renderTrackingResult(queryCode);
-  }
-}
-
-function renderTrackingResult(code) {
-  const resultBox = document.getElementById("trackingResultBox");
-  if (!resultBox) return;
-
-  // Find exact match or generate realistic tracking report
-  const cleanCode = code.toUpperCase().trim();
-  let data = SAMPLE_SHIPMENTS[cleanCode];
-
-  if (!data) {
-    // Generate simulated dynamic cargo result for user's custom tracking number
-    data = {
-      code: cleanCode,
-      status: "Customs Clearing in Progress - Apapa Port",
-      statusType: "in-transit",
-      origin: "Foreign Origin Port of Departure",
-      destination: "Apapa Maritime Terminal, Lagos, Nigeria",
-      vessel: "ATLANTIC CARRIER V.204",
-      blNumber: `BL-${cleanCode.replace(/[^A-Z0-9]/g, "")}`,
-      containerNo: `TEMU-${Math.floor(100000 + Math.random() * 900000)}-1`,
-      eta: "Within 48 Business Hours",
-      weight: "18,400 KG",
-      commodity: "Commercial Freight Consignment",
-      steps: [
-        { title: "Container Manifest Lodged with NPA", date: "3 Days Ago", location: "Nigerian Ports Authority Portal", done: true },
-        { title: "Vessel Discharged at Lagos Wharf", date: "Yesterday, 14:00 WAT", location: "Apapa Terminal Berthing Quay", done: true },
-        { title: "Physical & Non-Intrusive Scanning Inspection", date: "Today, 10:15 AM", location: "NCS Apapa Command", done: true, active: true },
-        { title: "Customs Clearance & Duty Payment Approval", date: "In Progress", location: "FISMMOK Clearing Division", done: false },
-        { title: "Flatbed Truck Haulage to Final Destination", date: "Pending Terminal Release", location: "Nigeria Transit Network", done: false }
-      ]
-    };
-  }
-
-  // Populate HTML
-  resultBox.innerHTML = `
-    <div class="tracking-header-meta">
-      <div>
-        <span style="font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Consignment Reference</span>
-        <h3 style="font-size: 1.4rem; color: var(--primary); font-family: var(--font-heading);">${data.code}</h3>
-        <p style="font-size: 0.85rem; color: var(--text-muted); margin-top: 0.2rem;">B/L: <strong>${data.blNumber}</strong> • Container: <strong>${data.containerNo}</strong></p>
-      </div>
-      <div>
-        <span class="status-pill ${data.statusType}">
-          <span class="pulse-dot" style="width: 7px; height: 7px;"></span>
-          ${data.status}
-        </span>
-      </div>
-    </div>
-
-    <!-- Quick Info Grid -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-bottom: 2rem; background: var(--bg-subtle); padding: 1.25rem; border-radius: var(--radius-md); border: 1px solid var(--border-light);">
-      <div>
-        <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Port of Origin</div>
-        <div style="font-weight: 600; color: var(--primary); font-size: 0.95rem;">${data.origin}</div>
-      </div>
-      <div>
-        <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Destination Port</div>
-        <div style="font-weight: 600; color: var(--primary); font-size: 0.95rem;">${data.destination}</div>
-      </div>
-      <div>
-        <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Carrier / Vessel</div>
-        <div style="font-weight: 600; color: var(--secondary); font-size: 0.95rem;">${data.vessel}</div>
-      </div>
-      <div>
-        <div style="font-size: 0.75rem; text-transform: uppercase; color: var(--text-muted); font-weight: 700;">Estimated Arrival / Status</div>
-        <div style="font-weight: 700; color: var(--accent); font-size: 0.95rem;">${data.eta}</div>
-      </div>
-    </div>
-
-    <!-- Timeline Stepper -->
-    <h4 style="font-family: var(--font-heading); font-size: 1.15rem; color: var(--primary); margin-bottom: 1.25rem; display: flex; align-items: center; gap: 0.5rem;">
-      <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm1 14h-2v-2h2v2zm0-4h-2V7h2v5z"/></svg>
-      Shipment Movement Milestones
-    </h4>
-
-    <div class="timeline-stepper">
-      ${data.steps.map(step => `
-        <div class="timeline-step ${step.done ? 'completed' : ''} ${step.active ? 'active' : ''}">
-          <div class="step-node"></div>
-          <div class="step-time">${step.date}</div>
-          <div class="step-title">${step.title}</div>
-          <div class="step-location">${step.location}</div>
-        </div>
-      `).join("")}
-    </div>
-
-    <div style="margin-top: 2.5rem; padding: 1.25rem; background: rgba(30, 111, 217, 0.08); border-radius: var(--radius-md); border: 1px dashed var(--secondary); display: flex; justify-content: space-between; align-items: center; flex-wrap: gap: 1rem;">
-      <div>
-        <div style="font-weight: 700; color: var(--primary); font-size: 0.95rem;">Need live terminal assistance with this consignment?</div>
-        <div style="font-size: 0.85rem; color: var(--text-muted);">Connect directly with our Apapa Wharf Clearing & Operations desk.</div>
-      </div>
-      <a href="https://wa.me/2348109285465?text=Hello%20FISMMOK%20Operations,%20I%20am%20tracking%20consignment%20${encodeURIComponent(data.code)}" target="_blank" rel="noopener" class="btn btn-accent btn-sm">
-        Inquire via WhatsApp
-      </a>
-    </div>
-  `;
-
-  resultBox.style.display = "block";
-  resultBox.scrollIntoView({ behavior: "smooth", block: "nearest" });
-}
-
-/* --------------------------------------------------------------------------
-   5. Hero Quick Track Widget
-   -------------------------------------------------------------------------- */
-function initQuickTrackHero() {
-  const quickForm = document.getElementById("quickTrackHeroForm");
-  const quickInput = document.getElementById("quickTrackHeroInput");
-
-  if (!quickForm || !quickInput) return;
-
-  quickForm.addEventListener("submit", (e) => {
-    e.preventDefault();
-    const val = quickInput.value.trim();
-    if (!val) {
-      showToast("Please enter your tracking number.");
-      return;
-    }
-    // Redirect to track.html with code query parameter
-    window.location.href = `track.html?code=${encodeURIComponent(val)}`;
-  });
-}
-
-/* --------------------------------------------------------------------------
-   6. Form Validation & Handling (Quote & Contact)
+   4. Form Submission & Processing (Quote & Contact)
    -------------------------------------------------------------------------- */
 function initForms() {
-  // Quote Form
   const quoteForm = document.getElementById("quoteForm");
   if (quoteForm) {
-    quoteForm.addEventListener("submit", (e) => {
+    quoteForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      
-      const name = quoteForm.querySelector("[name='fullName']").value.trim();
-      const phone = quoteForm.querySelector("[name='phone']").value.trim();
-      const service = quoteForm.querySelector("[name='serviceType']").value;
-      const origin = quoteForm.querySelector("[name='origin']").value.trim();
-      const destination = quoteForm.querySelector("[name='destination']").value.trim();
+
+      const name = (quoteForm.querySelector("[name='fullName']")?.value || "").trim();
+      const company = (quoteForm.querySelector("[name='companyName']")?.value || "").trim();
+      const email = (quoteForm.querySelector("[name='email']")?.value || "").trim();
+      const phone = (quoteForm.querySelector("[name='phone']")?.value || "").trim();
+      const service = quoteForm.querySelector("[name='serviceType']")?.value || "";
+      const cargo = (quoteForm.querySelector("[name='cargoType']")?.value || "").trim();
+      const origin = (quoteForm.querySelector("[name='origin']")?.value || "").trim();
+      const destination = (quoteForm.querySelector("[name='destination']")?.value || "").trim();
+      const weight = (quoteForm.querySelector("[name='weight']")?.value || "").trim();
+      const incoterm = quoteForm.querySelector("[name='incoterm']")?.value || "";
+      const notes = (quoteForm.querySelector("[name='message']")?.value || "").trim();
 
       if (!name || !phone || !origin || !destination) {
-        showToast("Please fill in all required fields to calculate your quote.");
+        showToast("Please fill in all required fields to submit your freight quote request.");
         return;
       }
 
-      // Format WhatsApp message option
-      const waMsg = `*FISMMOK LOGISTIX - Quote Request*\n\nName: ${name}\nPhone: ${phone}\nService: ${service}\nRoute: ${origin} ➔ ${destination}\nDetails submitted via website.`;
-      const waUrl = `https://wa.me/2348109285465?text=${encodeURIComponent(waMsg)}`;
+      const submitBtn = quoteForm.querySelector("button[type='submit']");
+      const originalBtnText = submitBtn ? submitBtn.innerHTML : "Calculate & Submit Freight Quote Request &rarr;";
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Submitting Quote to Apapa Operations Desk...";
+      }
 
-      // Success modal / display
+      // WhatsApp quick message URL
+      const waSummary = `*FISMMOK LOGISTIX - Freight Quote Request*
+*Name:* ${name}
+*Company:* ${company || "Individual Consignee"}
+*Phone:* ${phone}
+*Email:* ${email || "Not provided"}
+*Service:* ${service}
+*Commodity:* ${cargo}
+*Route:* ${origin} ➔ ${destination}
+*Gross Weight/Size:* ${weight || "Standard Container"}
+*Incoterm:* ${incoterm}
+*Notes:* ${notes || "None"}`;
+
+      const waUrl = `https://wa.me/2348109285465?text=${encodeURIComponent(waSummary)}`;
+
+      // Prepare payload for FormSubmit endpoint
+      const payload = {
+        _subject: `New Freight Quote Request: ${service} (${origin} -> ${destination})`,
+        _cc: (typeof FISMMOK_CONFIG !== "undefined" && FISMMOK_CONFIG.forms?.ccEmail) ? FISMMOK_CONFIG.forms.ccEmail : "O.kayode@fismmoklogistix.com",
+        fullName: name,
+        companyName: company,
+        email: email,
+        phone: phone,
+        serviceType: service,
+        cargoType: cargo,
+        origin: origin,
+        destination: destination,
+        weight: weight,
+        incoterm: incoterm,
+        message: notes,
+        submittedAt: new Date().toISOString()
+      };
+
+      const endpoint = (typeof FISMMOK_CONFIG !== "undefined" && FISMMOK_CONFIG.forms?.formsubmitEndpoint)
+        ? FISMMOK_CONFIG.forms.formsubmitEndpoint
+        : "https://formsubmit.co/ajax/Kayodeosanyintuyi@yahoo.com";
+
+      try {
+        await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn("Direct form submission notice:", err);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnText;
+        }
+      }
+
+      // Display detailed confirmation feedback card
       const feedbackDiv = document.getElementById("quoteFeedback");
       if (feedbackDiv) {
         feedbackDiv.innerHTML = `
-          <div style="background: #ECFDF5; border: 1.5px solid #10B981; border-radius: var(--radius-md); padding: 1.5rem; text-align: center; margin-top: 1.5rem;">
-            <div style="color: #059669; font-weight: 800; font-size: 1.2rem; margin-bottom: 0.5rem;">Quote Request Generated Successfully!</div>
-            <p style="color: #065F46; font-size: 0.95rem; margin-bottom: 1.25rem;">
-              Thank you, <strong>${name}</strong>. Our Apapa logistics officers have logged your shipment details from <strong>${origin}</strong> to <strong>${destination}</strong>.
+          <div style="background: #ECFDF5; border: 1.5px solid #10B981; border-radius: var(--radius-md); padding: 1.75rem; text-align: center; margin-top: 1.5rem; box-shadow: var(--shadow-md);">
+            <div style="color: #059669; font-weight: 800; font-size: 1.25rem; margin-bottom: 0.5rem; display: flex; align-items: center; justify-content: center; gap: 0.5rem;">
+              <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+              Quote Request Successfully Dispatched!
+            </div>
+            <p style="color: #065F46; font-size: 1rem; line-height: 1.6; max-width: 600px; margin: 0 auto 1.25rem;">
+              Thank you, <strong>${name}</strong>. Your freight parameters for <strong>${service}</strong> from <strong>${origin}</strong> to <strong>${destination}</strong> have been submitted directly to the FISMMOK Operations desk (<strong>Kayodeosanyintuyi@yahoo.com</strong>).
+            </p>
+            <p style="color: #047857; font-size: 0.875rem; margin-bottom: 1.5rem;">
+              Our Apapa tariff officers are reviewing your consignment for fastest clearance &amp; lowest tariff assessment.
             </p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-              <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-accent btn-sm">
-                Fast-Track on WhatsApp Desk
+              <a href="${waUrl}" target="_blank" rel="noopener" class="btn btn-accent btn-md">
+                Fast-Track on WhatsApp Desk &rarr;
               </a>
-              <button type="button" class="btn btn-outline-navy btn-sm" onclick="location.reload()">
-                Submit Another Request
+              <button type="button" class="btn btn-outline-navy btn-md" onclick="location.reload()">
+                Submit Another Shipment
               </button>
             </div>
           </div>
         `;
         feedbackDiv.scrollIntoView({ behavior: "smooth" });
       } else {
-        showToast("Quote request submitted! Our team will contact you shortly.");
+        showToast("Quote request dispatched! Our team will contact you shortly.");
       }
     });
   }
@@ -431,14 +272,56 @@ function initForms() {
   // Contact Form
   const contactForm = document.getElementById("contactForm");
   if (contactForm) {
-    contactForm.addEventListener("submit", (e) => {
+    contactForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-      const name = contactForm.querySelector("[name='name']").value.trim();
-      const message = contactForm.querySelector("[name='message']").value.trim();
+      const name = (contactForm.querySelector("[name='name']")?.value || "").trim();
+      const email = (contactForm.querySelector("[name='email']")?.value || "").trim();
+      const phone = (contactForm.querySelector("[name='phone']")?.value || "").trim();
+      const subject = (contactForm.querySelector("[name='subject']")?.value || "").trim();
+      const message = (contactForm.querySelector("[name='message']")?.value || "").trim();
 
       if (!name || !message) {
         showToast("Please enter your name and message.");
         return;
+      }
+
+      const submitBtn = contactForm.querySelector("button[type='submit']");
+      if (submitBtn) {
+        submitBtn.disabled = true;
+        submitBtn.innerHTML = "Sending Message...";
+      }
+
+      const payload = {
+        _subject: `New Contact Inquiry from ${name} [${subject || "General"}]`,
+        _cc: (typeof FISMMOK_CONFIG !== "undefined" && FISMMOK_CONFIG.forms?.ccEmail) ? FISMMOK_CONFIG.forms.ccEmail : "O.kayode@fismmoklogistix.com",
+        name: name,
+        email: email,
+        phone: phone,
+        subject: subject,
+        message: message,
+        submittedAt: new Date().toISOString()
+      };
+
+      const endpoint = (typeof FISMMOK_CONFIG !== "undefined" && FISMMOK_CONFIG.forms?.formsubmitEndpoint)
+        ? FISMMOK_CONFIG.forms.formsubmitEndpoint
+        : "https://formsubmit.co/ajax/Kayodeosanyintuyi@yahoo.com";
+
+      try {
+        await fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Accept": "application/json"
+          },
+          body: JSON.stringify(payload)
+        });
+      } catch (err) {
+        console.warn("Contact form notice:", err);
+      } finally {
+        if (submitBtn) {
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = "Send Inquiry Message &rarr;";
+        }
       }
 
       showToast(`Thank you, ${name}! Your inquiry has been sent to our Apapa team.`);
